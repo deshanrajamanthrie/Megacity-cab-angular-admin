@@ -7,16 +7,28 @@ export const MENU: MenuItem[] = [
     isTitle: true
   },
   {
-    id: 5,
-    label: 'Designations',
+    id: 2,
+    label: 'Dashboard',
     icon: 'pocket',
-    link: '/designations',
+    link: '/',
   },
-
-
-
-
-
-
+  {
+    id: 3,
+    label: 'Vehicle',
+    icon: 'pocket',
+    link: '/vehicle',
+  },
+  {
+    id: 4,
+    label: 'Driver',
+    icon: 'pocket',
+    link: '/driver',
+  },
+  {
+    id: 5,
+    label: 'Booking',
+    icon: 'pocket',
+    link: '/booking',
+  },
 
 ];
