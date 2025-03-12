@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-vehicle',
@@ -8,6 +9,26 @@ import { CommonModule } from '@angular/common';
   templateUrl: './vehicle.component.html',
   styleUrl: './vehicle.component.scss'
 })
-export class VehicleComponent {
+export class VehicleComponent implements OnInit {
+
+
+  ngOnInit(): void {
+
+  }
+
+  private modalService = inject(NgbModal);
+
+
+
+  AddVehicleModal(addVehicleModal: any) {
+    this.modalService.open(addVehicleModal, { size: 'lg' });
+
+
+  }
+
+
+
+
+
 
 }
