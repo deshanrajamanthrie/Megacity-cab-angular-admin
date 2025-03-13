@@ -15,19 +15,19 @@ export const MENU: MenuItem[] = [
   {
     id: 3,
     label: 'Vehicle',
-    icon: 'pocket',
+    icon: 'truck',
     link: '/vehicle',
   },
   {
     id: 4,
     label: 'Driver',
-    icon: 'pocket',
+    icon: 'users',
     link: '/driver',
   },
   {
     id: 5,
     label: 'Booking',
-    icon: 'pocket',
+    icon: 'book',
     link: '/booking',
   },
 

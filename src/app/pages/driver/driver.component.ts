@@ -19,14 +19,13 @@ export class DriverComponent {
   ngOnInit(): void {
     this.iniProject();
   }
+
   iniProject() {
     this.driverAdd = this.formBuilder.group({
       id: ['', Validators.required],
-      brand: [''],
-      millage: [],
-      fuelType: [''],
-      color: [''],
-      numberPlate: ['']
+      name: [''],
+      contactNumber: [''],
+      address: [''],
     });
   }
 
@@ -35,7 +34,6 @@ export class DriverComponent {
 
   AddVehicleModal(addVehicleModal: any) {
     this.modalService.open(addVehicleModal, { size: 'lg' });
-
   }
 
 
