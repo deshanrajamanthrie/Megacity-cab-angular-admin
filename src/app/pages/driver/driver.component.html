@@ -14,7 +14,7 @@
           </div>
           <div class="col-6 text-end">
             <button
-              (click)="AddVehicleModal(addVehicleModal)"
+              (click)="AddVehicleModal(addDriverModal)"
               type="button"
               class="btn btn-primary waves-effect waves-light px-5"
             >
@@ -94,7 +94,7 @@
 </div>
 
 <!-- add vehcile modal -->
-<ng-template #addVehicleModal role="document" let-modal>
+<ng-template #addDriverModal role="document" let-modal>
   <div class="modal-header p-3 bg-dark-subtle">
     <h5 class="modal-title" id="createboardModalLabel">Edit project</h5>
     <button
@@ -107,7 +107,7 @@
     ></button>
   </div>
   <div class="modal-body">
-    <form [formGroup]="VehicleAdd" (ngSubmit)="addVehicle()">
+    <form [formGroup]="driverAdd" (ngSubmit)="addDriver()">
       <div class="row">
         <div class="col-lg-6 col-md-6 mb-3">
           <label for="boardName" class="form-label"
