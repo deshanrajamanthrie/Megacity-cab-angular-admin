@@ -3,19 +3,16 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { environment } from "src/environments/environment";
 
-
-
 const httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
-const API_URL = ''
-// environment.apiURL + '/tasks';
+const API_URL = environment.apiURL + '/vehicle'
 
 @Injectable({
     providedIn: 'root'
 })
 
-export class TaskService {
+export class VehicleService {
 
 
     constructor(private http: HttpClient) {

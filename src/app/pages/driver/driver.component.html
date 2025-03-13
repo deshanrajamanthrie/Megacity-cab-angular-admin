@@ -30,59 +30,38 @@
           <thead>
             <tr>
               <th scope="col">ID</th>
-              <th scope="col">Customer</th>
-              <th scope="col">Date</th>
-              <th scope="col">Invoice</th>
+              <th scope="col">Driver Name</th>
+              <th scope="col">Contact Number</th>
+              <th scope="col">Address</th>
               <th scope="col">Action</th>
             </tr>
           </thead>
           <tbody>
+            @for (item of driverData; track $index) {
             <tr>
-              <th scope="row"><a href="#" class="fw-semibold">#VZ2110</a></th>
-              <td>Bobby Davis</td>
-              <td>October 15, 2021</td>
-              <td>$2,300</td>
+              <td>{{ item.driverId }}</td>
+              <td>{{ item.name }}</td>
+              <td>{{ item.phone }}</td>
+              <td>{{ item.address }}</td>
               <td>
-                <a href="javascript:void(0);" class="link-success"
-                  >View More <i class="ri-arrow-right-line align-middle"></i
-                ></a>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row"><a href="#" class="fw-semibold">#VZ2109</a></th>
-              <td>Christopher Neal</td>
-              <td>October 7, 2021</td>
-              <td>$5,500</td>
-              <td>
-                <a href="javascript:void(0);" class="link-success"
-                  >View More <i class="ri-arrow-right-line align-middle"></i
-                ></a>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row"><a href="#" class="fw-semibold">#VZ2108</a></th>
-              <td>Monkey Karry</td>
-              <td>October 5, 2021</td>
-              <td>$2,420</td>
-              <td>
-                <a href="javascript:void(0);" class="link-success"
-                  >View More <i class="ri-arrow-right-line align-middle"></i
-                ></a>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row"><a href="#" class="fw-semibold">#VZ2107</a></th>
-              <td>James White</td>
-              <td>October 2, 2021</td>
-              <td>$7,452</td>
-              <td>
-                <a href="javascript:void(0);" class="link-success"
-                  >View More
+                <button
+                  (click)="updateDriverModal(UpdateDriverModal, item)"
+                  type="button"
+                  class="btn btn-sm btn-soft-warning waves-effect waves-light"
+                >
+                  Update
+                </button>
 
-                  <i class="ri-arrow-right-line align-middle"></i
-                ></a>
+                <button
+                  (click)="deleteDriver(item.id)"
+                  type="button"
+                  class="btn btn-sm btn-soft-danger waves-effect waves-light mx-3"
+                >
+                  Delete
+                </button>
               </td>
             </tr>
+            }
           </tbody>
         </table>
       </div>
@@ -117,7 +96,97 @@
             type="text"
             class="form-control"
             id="boardName"
-            placeholder="Driver Id"
+            placeholder="D00X"
+            formControlName="id"
+            appMaxInputLimit
+            [maxLength]="85"
+          />
+        </div>
+        <div class="col-lg-6 col-md-6 mb-3">
+          <label for="boardName" class="form-label">Driver Name </label>
+          <input
+            type="text"
+            class="form-control"
+            id="boardName"
+            placeholder="Driver Name"
+            formControlName="name"
+            appMaxInputLimit
+            [maxLength]="85"
+          />
+        </div>
+        <div class="col-lg-12 col-md-12 mb-3">
+          <label for="boardName" class="form-label"
+            >Driver Contact Number <span class="text-danger">*</span></label
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="boardName"
+            placeholder="Contact Number"
+            formControlName="contactNumber"
+            appMaxInputLimit
+            [maxLength]="85"
+          />
+        </div>
+
+        <div class="col-lg-12 col-md-12 mb-3">
+          <label for="boardName" class="form-label">Driver Address</label>
+          <input
+            type="text"
+            class="form-control"
+            id="boardName"
+            placeholder="Driver address"
+            formControlName="address"
+            appMaxInputLimit
+            [maxLength]="85"
+          />
+        </div>
+
+        <div class="mt-4">
+          <div class="hstack gap-2 justify-content-end">
+            <button
+              type="button"
+              class="btn btn-light"
+              data-bs-dismiss="modal"
+              (click)="modal.close('Close click')"
+            >
+              Close
+            </button>
+            <button type="submit" class="btn btn-primary" id="addNewBoard">
+              Add Driver
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</ng-template>
+
+<!-- update vehicle -->
+<ng-template #UpdateDriverModal role="document" let-modal>
+  <div class="modal-header p-3 bg-dark-subtle">
+    <h5 class="modal-title" id="createboardModalLabel">Update Driver</h5>
+    <button
+      type="button"
+      class="btn-close"
+      id="btn-close2"
+      data-bs-dismiss="modal"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="updateDriver" (ngSubmit)="EditDriver()">
+      <div class="row">
+        <div class="col-lg-6 col-md-6 mb-3">
+          <label for="boardName" class="form-label"
+            >Driver Id <span class="text-danger">*</span></label
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="boardName"
+            placeholder="D00X"
             formControlName="id"
             appMaxInputLimit
             [maxLength]="85"

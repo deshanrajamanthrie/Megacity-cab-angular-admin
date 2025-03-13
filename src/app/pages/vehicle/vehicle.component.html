@@ -117,7 +117,7 @@
             type="text"
             class="form-control"
             id="boardName"
-            placeholder="project name"
+            placeholder="V00X"
             formControlName="id"
             appMaxInputLimit
             [maxLength]="85"
@@ -129,7 +129,7 @@
             type="text"
             class="form-control"
             id="boardName"
-            placeholder="project name"
+            placeholder="Brand"
             formControlName="brand"
             appMaxInputLimit
             [maxLength]="85"
@@ -143,7 +143,7 @@
             type="text"
             class="form-control"
             id="boardName"
-            placeholder="project name"
+            placeholder="Millage"
             formControlName="millage"
             appMaxInputLimit
             [maxLength]="85"
@@ -159,9 +159,9 @@
             formControlName="fuelType"
             aria-label="Default select example"
           >
-            <option disabled>Open this select menu</option>
-            <option value="Petrol">Petrol</option>
-            <option value="Diesel">Diesel</option>
+            <option disabled selected>Open this select menu</option>
+            <option value="PETROL">Petrol</option>
+            <option value="DIESEL">Diesel</option>
           </select>
         </div>
 
@@ -188,6 +188,54 @@
             appMaxInputLimit
             [maxLength]="85"
           />
+        </div>
+
+        <div class="col-lg-12 col-md-12 mb-3">
+          <label for="boardName" class="form-label"
+            >Assign a Driver<span class="text-danger">*</span></label
+          >
+          <select
+            class="form-select mb-3"
+            formControlName="fuelType"
+            aria-label="Default select example"
+          >
+            <option disabled selected>Open this select menu</option>
+            <option value="PETROL">Petrol</option>
+            <option value="DIESEL">Diesel</option>
+          </select>
+        </div>
+
+        <div class="col-lg-12 col-md-12 mb-3">
+          <div class="d-flex align-items-center">
+            <!-- First Radio Button -->
+            <div class="form-check form-radio-warning me-3">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="formradiocolor4"
+                id="publicRadio"
+                formControlName="status"
+                value="AVILABLE"
+              />
+              <label class="form-check-label" for="publicRadio">
+                Available
+              </label>
+            </div>
+            <!-- Second Radio Button -->
+            <div class="form-check form-radio-warning">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="formradiocolor4"
+                id="privateRadio"
+                formControlName="status"
+                value="INAVILABLE"
+              />
+              <label class="form-check-label" for="privateRadio"
+                >Unavailable</label
+              >
+            </div>
+          </div>
         </div>
 
         <div class="mt-4">
