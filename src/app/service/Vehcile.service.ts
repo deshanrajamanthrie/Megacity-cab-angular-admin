@@ -6,7 +6,7 @@ import { environment } from "src/environments/environment";
 const httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
-const API_URL = environment.apiURL + '/vehicle'
+const API_URL = environment.apiURL + 'vehicle'
 
 @Injectable({
     providedIn: 'root'
@@ -23,8 +23,12 @@ export class VehicleService {
         return this.http.post<any>(API_URL, vehicle, httpOptions);
     }
 
-    vehicleGetAll(id: number): Observable<any> {
-        return this.http.get<any>(API_URL);
+    vehicleGetAll(): Observable<any> {
+        return this.http.get<any>(API_URL, httpOptions);
+    }
+
+    updateVehicle(payload: any): Observable<any> {
+        return this.http.put<any>(API_URL, payload, httpOptions);
     }
 
 }

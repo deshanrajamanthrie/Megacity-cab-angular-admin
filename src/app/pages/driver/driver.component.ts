@@ -8,6 +8,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 
 import { ToastrService } from 'ngx-toastr';
 import Swal from 'sweetalert2';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Component({
   selector: 'app-driver',
@@ -27,6 +28,7 @@ export class DriverComponent {
 
   private formBuilder = inject(FormBuilder);
   private driverService = inject(DriverService);
+  private ngxLoader = inject(NgxUiLoaderService);
   driverData: any
   constructor(public toastService: ToastService) {
 
@@ -66,10 +68,13 @@ export class DriverComponent {
         address: this.driverAdd.get('address')?.value,
       }
       console.log(payload);
+      this.ngxLoader.start();
       this.driverService.addDriver(payload).subscribe({
         next: () => {
           console.log('log success');
           this.driverAdd.reset();
+          this.getAllDriver();
+          this.ngxLoader.stop();
           this.modalService.dismissAll('close');
           this.toster.success('Driver save  successfully', 'Success');
         }, error: (error) => {
@@ -80,13 +85,16 @@ export class DriverComponent {
   }
 
   getAllDriver() {
+    this.ngxLoader.start();
     this.driverService.driverGetAll().subscribe({
       next: (res) => {
-        console.log('ypoooo', res.data);
         this.driverData = res;
+        this.ngxLoader.stop();
       }
       , error: (err) => {
+        this.ngxLoader.stop();
         throw err;
+
       }
     })
   }
@@ -112,12 +120,16 @@ export class DriverComponent {
         phone: this.updateDriver.get('contactNumber')?.value,
         address: this.updateDriver.get('address')?.value,
       }
+      this.ngxLoader.start();
       this.driverService.updateDriver(payload).subscribe({
         next: () => {
           this.updateDriver.reset();
+          this.getAllDriver();
           this.modalService.dismissAll('close');
           this.toster.success('Update driver successfully', 'Success');
+          this.ngxLoader.stop();
         }, error: (error) => {
+          this.ngxLoader.stop();
           throw error;
         }
       })
@@ -126,7 +138,7 @@ export class DriverComponent {
 
   deleteDriver(id: any) {
     Swal.fire({
-      title: 'Are you sure ?',
+      title: 'Are you sure?',
       text: 'Are you sure you want to delete this driver?',
       icon: 'warning',
       showCancelButton: true,
@@ -135,20 +147,19 @@ export class DriverComponent {
       cancelButtonText: 'Cancel'
     }).then(result => {
       if (result.value) {
+        this.ngxLoader.start();
         this.driverService.deleteDriver(id).subscribe({
           next: () => {
             this.toster.success('Delete driver successfully', 'Success');
             this.getAllDriver();
+            this.ngxLoader.stop();
           }, error: (error: any) => {
+            this.ngxLoader.stop();
             throw error;
           }
         })
       }
     });
   }
-
-
-
-
 
 }
