@@ -36,6 +36,9 @@ import { ApplicationEffects } from './store/Jobs/jobs_effect';
 import { ApikeyEffects } from './store/APIKey/apikey_effect';
 import { AuthenticationEffects } from './store/Authentication/authentication.effects';
 import { ToastrModule } from 'ngx-toastr';
+import { NgxUiLoaderModule } from 'ngx-ui-loader';
+import { ngxUiLoaderConfig } from './core/config/ngx-ui-loader.config';
+
 
 export function createTranslateLoader(http: HttpClient): any {
   return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
@@ -81,6 +84,7 @@ export function createTranslateLoader(http: HttpClient): any {
     AppRoutingModule,
     LayoutsModule,
     PagesModule,
+    NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
     ToastrModule.forRoot({
       timeOut: 10000,
       positionClass: 'toast-top-right',

@@ -26,9 +26,22 @@ export const MENU: MenuItem[] = [
   },
   {
     id: 5,
-    label: 'Booking',
+    label: 'Booking',/* A */
     icon: 'book',
     link: '/booking',
+  },
+
+  {
+    id: 6,
+    label: 'Manage other',
+    icon: 'book',
+    link: '/',
+  },
+  {
+    id: 7,
+    label: 'Manage Payment',
+    icon: 'book',
+    link: '/',
   },
 
 ];
